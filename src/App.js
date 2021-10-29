@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
+import SearchTodos from './TodoList';
+import TodoList from './TodoList';
+import SearchUsers from './UserList';
+import UserList from './UserList_default';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='App'>
+      <h2>Higher order component</h2>
+      <div className='section'>
+        <SearchUsers />
+        <SearchTodos />
+      </div>
     </div>
   );
 }
