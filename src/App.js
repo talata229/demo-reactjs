@@ -1,19 +1,7 @@
-import './App.css';
-import SearchTodos from './TodoList';
-import TodoList from './TodoList';
-import SearchUsers from './UserList';
-import UserList from './UserList_default';
+import TodoApp from './Todo';
 
 function App() {
-  return (
-    <div className='App'>
-      <h2>Higher order component</h2>
-      <div className='section'>
-        <SearchUsers />
-        <SearchTodos />
-      </div>
-    </div>
-  );
+  return <TodoApp/>
 }
 
 export default App;
