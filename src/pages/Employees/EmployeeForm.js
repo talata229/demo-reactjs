@@ -8,7 +8,7 @@ import {
   RadioGroup,
   TextField,
 } from '@material-ui/core';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Controls from '../../components/controls/Controls';
 import { useForm, Form } from '../../components/useForm';
 import * as employeeService from '../../services/employeeService';
@@ -39,7 +39,17 @@ const genderItems = [
     title: 'Other',
   },
 ];
-export default function EmployeeForm() {
+export default function EmployeeForm(props) {
+  const { addOrEdit, recordForEdit } = props;
+
+useEffect(() => {
+  if(recordForEdit!=null) {
+    setValues({
+      ...recordForEdit,
+    })
+  }
+}, [recordForEdit])
+
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ('fullName' in fieldValues)
@@ -66,8 +76,7 @@ export default function EmployeeForm() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (validate()) {
-      employeeService.insertEmployee(values);
-      resetForm();
+      addOrEdit(values, resetForm);
     }
   };
 
